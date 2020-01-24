@@ -12,6 +12,10 @@
 (require-package 'helm)
 (require-package 'helm-projectile)
 
+(defun install-bling-fzf ()
+  "Fzf frontend for Emacs."
+  (require-package 'fzf))
+
 (defun configure-helm ()
   "Install Helm as my tool of choice."
   (require 'helm-config)
@@ -33,12 +37,13 @@
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings)))
 
+(install-bling-fzf)
 (configure-helm)
 (add-hook 'ielm-mode-hook 'configure-ielm)
 
 ;; set-up Meta-T for helm-projectile-file-search
 
-(global-set-key (kbd "M-t") 'helm-projectile-find-file)
+(global-set-key (kbd "M-t") 'fzf)
 
 ;; set-up Meta-G for ripgrep search using deadgrep
 
